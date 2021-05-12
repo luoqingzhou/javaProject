@@ -21,18 +21,14 @@ public class StartForm extends JFrame {
     private final int formWidth = 450;
     private final int  formHeight = 700;
     private JPanel mainPanel;
-    private JLabel lblBackground;
+    private JPanel startPanel;
     private JButton btnStart;
     private JButton btnExit;
     private JButton btnRank;
 
-    protected JLabel lbl;
-
     public StartForm() {
         super("marble");
-        //this.setBackground();
         this.setPanel();
-        this.setBtn();
         this.setMiddle();
 
 
@@ -50,7 +46,10 @@ public class StartForm extends JFrame {
         this.setBounds((screenWidth - formWidth) / 2, (screenHeight - formHeight) / 2, formWidth, formHeight);
     }
 
-    public void setBtn() {
+    public JPanel getStartPanel() {
+        JPanel panel = new StartPanel();
+        panel.setLayout(null);
+
         btnStart = new JButton("start");
         btnExit = new JButton("exit");
         btnRank = new JButton("rank");
@@ -68,25 +67,21 @@ public class StartForm extends JFrame {
         btnExit.setBounds(175, 400, 100, 50);
         btnRank.setBounds(175, 500, 100, 50);
 
+        panel.add(btnStart);
+        panel.add(btnExit);
+        panel.add(btnRank);
 
-        mainPanel.add(btnStart);
-        mainPanel.add(btnExit);
-        mainPanel.add(btnRank);
-
-
+        return panel;
     }
 
     public void setPanel() {
         mainPanel = (JPanel)this.getContentPane();
-        mainPanel.setLayout(null);
+        mainPanel.setLayout(new BorderLayout());
         mainPanel.setOpaque(false);
-    }
 
-    public void setBackground() {
-        ImageIcon img = new ImageIcon(path + "/resources/background1.png");
-        lblBackground = new JLabel(img);
-        lblBackground.setBounds(0, 0, img.getIconWidth(), img.getIconHeight());
-        getLayeredPane().add(lblBackground, -30000);
+        startPanel = getStartPanel();
+        startPanel.setOpaque(false);
+        mainPanel.add(startPanel, BorderLayout.CENTER);
     }
 
 
@@ -94,7 +89,7 @@ public class StartForm extends JFrame {
         @Override
         public void actionPerformed(ActionEvent e) {
             if (e.getSource() == btnStart) {
-                System.out.println("ready to new Game");
+                //System.out.println("ready to new Game");
                 new Game(StartForm.this);
                 StartForm.this.setVisible(false);
             }
@@ -121,6 +116,14 @@ public class StartForm extends JFrame {
             else {
                 System.out.println("error");
             }
+        }
+    }
+
+    class StartPanel extends JPanel {
+        public void paintComponent(Graphics g){
+            super.paintComponent(g);
+            Image image = new ImageIcon(path + "/resources/background1.png").getImage();
+            g.drawImage(image, 0, 0, this);
         }
     }
 }
