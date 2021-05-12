@@ -122,12 +122,4 @@ public class Game extends JFrame{
             }
         }
     }
-
-    class GamePanel extends JPanel {
-        public void paintComponent(Graphics g){
-            super.paintComponent(g);
-            Image image = new ImageIcon(path + "/resources/background1.png").getImage();
-            g.drawImage(image, 0, 0, this);
-        }
-    }
 }
