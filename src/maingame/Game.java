@@ -24,7 +24,7 @@ public class Game extends JFrame{
     private JLabel lblScore;
     private JPanel mainPanel;
     private JPanel topPanel;
-    private JPanel gamePanel;
+    private GamePanel gamePanel;
 
     public Game(StartForm startform) {
         super("marble");
@@ -92,8 +92,8 @@ public class Game extends JFrame{
         return panel;
     }
 
-    private JPanel getGamePanel() {
-        JPanel panel = new GamePanel();
+    private GamePanel getGamePanel() {
+        GamePanel panel = new GamePanel();
         //System.out.println("gamePanel created");
         return panel;
     }
@@ -105,6 +105,7 @@ public class Game extends JFrame{
         public void actionPerformed(ActionEvent e) {
             if (e.getSource() == btnMenu) {
                 isPlaying = false;
+                Game.this.gamePanel.stopGame();
                 Game.this.dispose();
                 Game.this.startform.setVisible(true);
             }
