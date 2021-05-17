@@ -3,24 +3,28 @@ package maingame;
 public class Ball {
     private boolean isRocketed;
     private int ballSpeed;
-    private double directionX;
-    private double directionY;
+    private double vX0;
+    private double vY0;
+    private double vX;
+    private double vY;
     private int xReference;
     private int yReference;
     private double xBall;
     private double yBall;
+    private int gy;
     private double ballReg;
     private int ballSize;
 
 
     public void init() {
         isRocketed = false;
-        ballSpeed = 8;
+        ballSpeed = 5;
         xReference = 225;
         yReference = 0;
         xBall = xReference;
         yBall= yReference;
         ballSize = 30;
+        gy = 3;
     }
 
     public Ball() {
@@ -35,8 +39,9 @@ public class Ball {
     }
 
     public void updateBallXY() {
-        xBall += directionX;
-        yBall += directionY;
+        updateV();
+        xBall += vX;
+        yBall += vY;
     }
 
     public void setRocketedTrue() {
@@ -47,16 +52,17 @@ public class Ball {
         isRocketed = false;
     }
 
-    public boolean getIsRocketed() {
-        return isRocketed;
-    }
-
     public void setReg(double reg) {
         ballReg = reg;
     }
 
-    public void setDirection() {
-        directionX = ballSpeed * Math.cos(ballReg);
-        directionY = ballSpeed * Math.sin(ballReg);
+    public void setV0() {
+        vX0 = ballSpeed * Math.cos(ballReg);
+        vY0 = ballSpeed * Math.sin(ballReg);
+    }
+
+    public void updateV() {
+        vX = vX0;
+        vY = vY0 + gy;
     }
 }

@@ -7,7 +7,6 @@ import java.awt.event.*;
 public class GamePanel extends JPanel {
     //private Game game;
     private static String path = System.getProperty("user.dir");
-    private boolean isBackGroundPainted = false;
     private Image imgBackground;
     private Image imgBall;
     private Timer timerBall;
@@ -39,16 +38,14 @@ public class GamePanel extends JPanel {
     public void paintComponent(Graphics g){
         super.paintComponent(g);
         //System.out.println("paint!");
-        if (!isBackGroundPainted) {
-            g.drawImage(imgBackground, 0, 0, this.getWidth(), this.getHeight(), this);
-        }
-        g.drawImage(imgBall, (int)ball.getX(), (int)ball.getY(), 30, 30,this);
+        g.drawImage(imgBackground, 0, 0, this.getWidth(), this.getHeight(), this);
+        g.drawImage(imgBall, (int)ball.getX(), (int)ball.getY(), 15, 15,this);
     }
 
     public void startGame() {
         isStart = true;
         //System.out.println("mouseClicked!");
-        ball.setDirection();
+        ball.setV0();
         ball.setRocketedTrue();
     }
 
@@ -62,8 +59,8 @@ public class GamePanel extends JPanel {
         @Override
         public void actionPerformed(ActionEvent e) {
             if (isStart) {
-                System.out.println("timer work");
-                ball.setDirection();
+                //System.out.println("timer work");
+
                 ball.updateBallXY();
                 GamePanel.this.repaint();
             }
@@ -110,7 +107,10 @@ public class GamePanel extends JPanel {
                 System.out.println("mouseMoved!");
                 int x = e.getX();
                 int y = e.getY();
-                double reg = Math.atan((y) / (x - 225));
+                double reg = Math.atan((y) / (x - 225.0));
+                if (reg < 0) {
+                    reg += Math.PI;
+                }
                 ball.setReg(reg);
             }
         }
