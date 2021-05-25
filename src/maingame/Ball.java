@@ -2,6 +2,7 @@ package maingame;
 
 public class Ball {
     private boolean isRocketed;
+    private boolean isOut;
     private int ballSpeed;
     private double vX0;
     private double vY0;
@@ -18,6 +19,7 @@ public class Ball {
 
     public void init() {
         isRocketed = false;
+        isOut = false;
         ballSpeed = 5;
         xReference = 225;
         yReference = 0;

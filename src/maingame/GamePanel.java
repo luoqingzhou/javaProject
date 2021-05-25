@@ -17,7 +17,7 @@ public class GamePanel extends JPanel {
     public GamePanel() {
 
 
-        imgBackground = new ImageIcon(path + "/resources/background1.png").getImage();
+        imgBackground = new ImageIcon(path + "/resources/background4.png").getImage();
         imgBall = new ImageIcon(path + "/resources/ball.png").getImage();
 
         panelWidth = this.getWidth();

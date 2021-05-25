@@ -70,10 +70,9 @@ public class Game extends JFrame{
         JPanel panel = new JPanel();
         panel.setLayout(new FlowLayout());
 
-        btnRestartAndPause = new JButton("pause");
-        btnRestartAndPause.setFont(new Font("Times New Roman", Font.BOLD, 20));
-        btnMenu = new JButton("menu");
-        btnMenu.setFont(new Font("Times New Roman", Font.BOLD, 20));
+        btnRestartAndPause = new JButton(new ImageIcon(path + "/resources/pause.jpg"));
+        btnMenu = new JButton(new ImageIcon(path + "/resources/menu.jpg"));
+
         lblShowScore = new JLabel("current score");
         lblShowScore.setFont(new Font("Times New Roman", Font.BOLD, 20));
         lblScore = new JLabel("000");
@@ -112,7 +111,7 @@ public class Game extends JFrame{
             else if (e.getSource() == btnRestartAndPause) {
                 if (isPlaying) {
                     isPlaying = false;
-                    btnRestartAndPause.setText("restart");
+                    btnRestartAndPause.setIcon(new ImageIcon(path + "/resources/restart.jpg"));
                     JOptionPane.showMessageDialog(Game.this, "pause");
                 }
                 else {

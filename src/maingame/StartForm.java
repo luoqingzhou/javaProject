@@ -50,22 +50,22 @@ public class StartForm extends JFrame {
         JPanel panel = new StartPanel();
         panel.setLayout(null);
 
-        btnStart = new JButton("start");
-        btnExit = new JButton("exit");
-        btnRank = new JButton("rank");
+        ImageIcon imgStart = new ImageIcon(path + "/resources/start.jpg");
+        ImageIcon imgExit = new ImageIcon(path + "/resources/exit.jpg");
+        ImageIcon imgRank = new ImageIcon(path + "/resources/rank.jpg");
 
-        btnStart.setFont(new Font("Times New Roman", Font.BOLD, 20));
-        btnExit.setFont(new Font("Times New Roman", Font.BOLD, 20));
-        btnRank.setFont(new Font("Times New Roman", Font.BOLD, 20));
+        btnStart = new JButton(imgStart);
+        btnExit = new JButton(imgExit);
+        btnRank = new JButton(imgRank);
 
         BtnListener btnListener = new BtnListener();
         btnStart.addActionListener(btnListener);
         btnExit.addActionListener(btnListener);
         btnRank.addActionListener(btnListener);
 
-        btnStart.setBounds(175, 300, 100, 50);
-        btnExit.setBounds(175, 400, 100, 50);
-        btnRank.setBounds(175, 500, 100, 50);
+        btnStart.setBounds(175, 300, imgStart.getIconWidth(), imgStart.getIconHeight());
+        btnExit.setBounds(175, 400, imgExit.getIconWidth(), imgExit.getIconHeight());
+        btnRank.setBounds(175, 500, imgRank.getIconWidth(), imgRank.getIconHeight());
 
         panel.add(btnStart);
         panel.add(btnExit);
@@ -122,7 +122,7 @@ public class StartForm extends JFrame {
     class StartPanel extends JPanel {
         public void paintComponent(Graphics g){
             super.paintComponent(g);
-            Image image = new ImageIcon(path + "/resources/background1.png").getImage();
+            Image image = new ImageIcon(path + "/resources/background4.png").getImage();
             g.drawImage(image, 0, 0, this);
         }
     }
