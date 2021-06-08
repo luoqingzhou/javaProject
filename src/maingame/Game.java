@@ -70,8 +70,14 @@ public class Game extends JFrame{
         JPanel panel = new JPanel();
         panel.setLayout(new FlowLayout());
 
-        btnRestartAndPause = new JButton(new ImageIcon(path + "/resources/pause.jpg"));
-        btnMenu = new JButton(new ImageIcon(path + "/resources/menu.jpg"));
+//        btnRestartAndPause = new JButton(new ImageIcon(path + "/resources/pause.jpg"));
+//        btnMenu = new JButton(new ImageIcon(path + "/resources/menu.jpg"));
+
+        btnRestartAndPause = new JButton("Pause");
+        btnMenu = new JButton("Menu");
+
+        btnRestartAndPause.setFont(new Font("Times New Roman", Font.BOLD, 20));
+        btnMenu.setFont(new Font("Times New Roman", Font.BOLD, 20));
 
         lblShowScore = new JLabel("current score");
         lblShowScore.setFont(new Font("Times New Roman", Font.BOLD, 20));
@@ -111,12 +117,12 @@ public class Game extends JFrame{
             else if (e.getSource() == btnRestartAndPause) {
                 if (isPlaying) {
                     isPlaying = false;
-                    btnRestartAndPause.setIcon(new ImageIcon(path + "/resources/restart.jpg"));
+                    btnRestartAndPause.setText("Restart");
                     JOptionPane.showMessageDialog(Game.this, "pause");
                 }
                 else {
                     isPlaying = true;
-                    btnRestartAndPause.setText("pause");
+                    btnRestartAndPause.setText("Pause");
                     JOptionPane.showMessageDialog(Game.this, "restart");
                 }
             }

@@ -30,9 +30,6 @@ public class StartForm extends JFrame {
         super("marble");
         this.setPanel();
         this.setMiddle();
-
-
-
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setResizable(false);
         this.setVisible(true);
@@ -50,22 +47,29 @@ public class StartForm extends JFrame {
         JPanel panel = new StartPanel();
         panel.setLayout(null);
 
-        ImageIcon imgStart = new ImageIcon(path + "/resources/start.jpg");
-        ImageIcon imgExit = new ImageIcon(path + "/resources/exit.jpg");
-        ImageIcon imgRank = new ImageIcon(path + "/resources/rank.jpg");
+//        ImageIcon imgStart = new ImageIcon(path + "/resources/start.jpg");
+//        ImageIcon imgExit = new ImageIcon(path + "/resources/exit.jpg");
+//        ImageIcon imgRank = new ImageIcon(path + "/resources/rank.jpg");
 
-        btnStart = new JButton(imgStart);
-        btnExit = new JButton(imgExit);
-        btnRank = new JButton(imgRank);
+        btnStart = new JButton("Start");
+        btnExit = new JButton("Exit");
+        btnRank = new JButton("Rank");
+
+        btnStart.setFont(new Font("Times New Roman", Font.BOLD, 20));
+        btnExit.setFont(new Font("Times New Roman", Font.BOLD, 20));
+        btnRank.setFont(new Font("Times New Roman", Font.BOLD, 20));
 
         BtnListener btnListener = new BtnListener();
         btnStart.addActionListener(btnListener);
         btnExit.addActionListener(btnListener);
         btnRank.addActionListener(btnListener);
 
-        btnStart.setBounds(175, 300, imgStart.getIconWidth(), imgStart.getIconHeight());
-        btnExit.setBounds(175, 400, imgExit.getIconWidth(), imgExit.getIconHeight());
-        btnRank.setBounds(175, 500, imgRank.getIconWidth(), imgRank.getIconHeight());
+//        btnStart.setBounds(175, 300, imgStart.getIconWidth(), imgStart.getIconHeight());
+//        btnExit.setBounds(175, 400, imgExit.getIconWidth(), imgExit.getIconHeight());
+//        btnRank.setBounds(175, 500, imgRank.getIconWidth(), imgRank.getIconHeight());
+        btnStart.setBounds(175, 300, 100, 40);
+        btnExit.setBounds(175, 400, 100, 40);
+        btnRank.setBounds(175, 500, 100, 40);
 
         panel.add(btnStart);
         panel.add(btnExit);

@@ -3,30 +3,34 @@ package maingame;
 public class Ball {
     private boolean isRocketed;
     private boolean isOut;
-    private int ballSpeed;
+    private double ballSpeed;
+    private double collisionSpeed;
     private double vX0;
     private double vY0;
     private double vX;
     private double vY;
-    private int xReference;
-    private int yReference;
+//    private int xReference;
+//    private int yReference;
     private double xBall;
     private double yBall;
-    private int gy;
-    private double ballReg;
-    private int ballSize;
+    private double gy;
+//    private double ballReg;
 
+    private Vector vecDir;
 
     public void init() {
         isRocketed = false;
         isOut = false;
-        ballSpeed = 5;
-        xReference = 225;
-        yReference = 0;
-        xBall = xReference;
-        yBall= yReference;
-        ballSize = 30;
-        gy = 3;
+        ballSpeed = 0.5;
+        collisionSpeed = 1;
+//        xReference = 225;
+//        yReference = 0;
+//        xBall = xReference;
+//        yBall= yReference;
+        xBall = 225;
+        yBall = 10;
+        gy = 0.5;
+        vecDir = new Vector(0, 0);
     }
 
     public Ball() {
@@ -39,6 +43,7 @@ public class Ball {
     public double getY() {
         return yBall;
     }
+    public Vector getVecDir() {return vecDir;}
 
     public void updateBallXY() {
         updateV();
@@ -54,13 +59,20 @@ public class Ball {
         isRocketed = false;
     }
 
-    public void setReg(double reg) {
-        ballReg = reg;
+    public void setVecDir(int x, int y) {
+        this.vecDir = new Vector(x, y);
     }
 
+    public void setVecDir(Vector v) {this.vecDir = v;}
+
     public void setV0() {
-        vX0 = ballSpeed * Math.cos(ballReg);
-        vY0 = ballSpeed * Math.sin(ballReg);
+        vX0 = ballSpeed * vecDir.getXDir();
+        vY0 = ballSpeed * vecDir.getYDir();
+    }
+
+    public void resetV0() {
+        vX0 = collisionSpeed * vecDir.getXDir();
+        vY0 = collisionSpeed * vecDir.getYDir();
     }
 
     public void updateV() {
