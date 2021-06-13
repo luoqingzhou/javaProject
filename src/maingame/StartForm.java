@@ -88,6 +88,9 @@ public class StartForm extends JFrame {
         mainPanel.add(startPanel, BorderLayout.CENTER);
     }
 
+    public void newGame() {
+        new Game(this);
+    }
 
     class BtnListener implements ActionListener {
         @Override

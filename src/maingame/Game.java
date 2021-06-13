@@ -98,11 +98,18 @@ public class Game extends JFrame{
     }
 
     private GamePanel getGamePanel() {
-        GamePanel panel = new GamePanel();
+        GamePanel panel = new GamePanel(this);
         //System.out.println("gamePanel created");
         return panel;
     }
 
+    public void setLblScore(int score) {
+        lblScore.setText(String.valueOf(score));
+    }
+
+    public void newGame() {
+        startform.newGame();
+    }
 
 
     class BtnListener implements ActionListener {
@@ -118,12 +125,17 @@ public class Game extends JFrame{
                 if (isPlaying) {
                     isPlaying = false;
                     btnRestartAndPause.setText("Restart");
-                    JOptionPane.showMessageDialog(Game.this, "pause");
+                    if (!Game.this.gamePanel.pause()) {
+                        JOptionPane.showMessageDialog(Game.this, "pause failed");
+                    }
+
                 }
                 else {
                     isPlaying = true;
                     btnRestartAndPause.setText("Pause");
-                    JOptionPane.showMessageDialog(Game.this, "restart");
+                    if (!Game.this.gamePanel.restart()) {
+                        JOptionPane.showMessageDialog(Game.this, "restart failed");
+                    }
                 }
             }
         }

@@ -1,8 +1,8 @@
 package maingame;
 
 public class Ball {
-    private boolean isRocketed;
-    private boolean isOut;
+    public boolean isRocketed;
+    public boolean isOut;
     private double ballSpeed;
     private double collisionSpeed;
     private double vX0;
@@ -19,9 +19,10 @@ public class Ball {
     private Vector vecDir;
 
     public void init() {
+        System.out.println("init");
         isRocketed = false;
         isOut = false;
-        ballSpeed = 0.5;
+        ballSpeed = 0.1;
         collisionSpeed = 1;
 //        xReference = 225;
 //        yReference = 0;
@@ -49,14 +50,6 @@ public class Ball {
         updateV();
         xBall += vX;
         yBall += vY;
-    }
-
-    public void setRocketedTrue() {
-        isRocketed = true;
-    }
-
-    public void setRocketedFalse() {
-        isRocketed = false;
     }
 
     public void setVecDir(int x, int y) {
